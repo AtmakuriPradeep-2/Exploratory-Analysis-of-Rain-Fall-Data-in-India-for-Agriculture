@@ -1,0 +1,4 @@
+rainfall_env/
+__pycache__/
+*.pyc
+*.pkl

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rainfall Prediction</title>
+    <style>
+        body {
+            background-color: #e6f2ff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 60px;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            margin: 8px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3399ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0073e6;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Rainfall Prediction</h1>
+
+    <form action="{{ url_for('predict') }}" method="post">
+
+        <input type="number" step="any" name="MinTemp" placeholder="MinTemp" required><br>
+        <input type="number" step="any" name="MaxTemp" placeholder="MaxTemp" required><br>
+        <input type="number" step="any" name="Rainfall" placeholder="Rainfall" required><br>
+        <input type="number" step="any" name="WindGustSpeed" placeholder="WindGustSpeed" required><br>
+        <input type="number" step="any" name="Humidity3pm" placeholder="Humidity3pm" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
